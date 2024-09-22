@@ -2,11 +2,9 @@ import firebase_admin
 from firebase_admin import credentials, firestore
 from flask import Flask, request, jsonify
 
-# Inisialisasi aplikasi Flask
-app = Flask(__name__)
 
-# Inisialisasi Firebase Admin SDK
-cred = credentials.Certificate("firebase-credentials.json")  # Ganti dengan path ke file JSON Firebase Anda
+app = Flask(__name__)
+cred = credentials.Certificate("firebase-credentials.json") 
 firebase_admin.initialize_app(cred)
 
 # Inisialisasi Firestore
@@ -18,7 +16,6 @@ def submit_form():
     email = request.form.get('email')
     message = request.form.get('message')
 
-    # Simpan data ke Firestore
     data = db.collection('submissions').add({
         'name': name,
         'email': email,

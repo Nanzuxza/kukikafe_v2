@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KuKiKaFe</title>
     <link href="dist/output.css" rel="stylesheet">
-    <link href="dist/output.css" rel="stylesheet">
+    <link href="src/input.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="icon" href="img/favicon.ico">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -92,18 +92,21 @@
 
 <body class="min-h-screen">
     <section>
-        <header id="navbar" class="fixed top-0 left-0 right-0 w-full z-50 bg-white shadow-md navbar px-6">
+        <header id="navbar" class="fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300">
             <div class="container mx-auto py-3 flex justify-between items-center transition-all duration-300">
                 <div class="transition-all duration-300">
                     <img src="/img/navbar_kuki_480.png" width="150" alt="kukikafe" class="transition-all duration-300">
                 </div>
                 <nav class="hidden md:flex space-x-4">
-                    <a href="#home" class="hover:text-yellow-500 transition duration-200">Beranda</a>
-                    <a href="#about" class="hover:text-yellow-500 transition duration-200">Tentang</a>
-                    <a href="#menu" class="hover:text-yellow-500 transition duration-200">Menu</a>
-                    <a href="#contact" class="hover:text-yellow-500 transition duration-200">Kontak</a>
+                    <a href="#home"
+                        class="nav-link text-white hover:text-yellow-500 transition duration-200">Beranda</a>
+                    <a href="#about"
+                        class="nav-link text-white hover:text-yellow-500 transition duration-200">Tentang</a>
+                    <a href="#menu" class="nav-link text-white hover:text-yellow-500 transition duration-200">Menu</a>
+                    <a href="#contact"
+                        class="nav-link text-white hover:text-yellow-500 transition duration-200">Kontak</a>
                 </nav>
-                <button id="hamburger" class="md:hidden flex flex-col justify-center items-center w-10 h-10"
+                <button id="hamburger" class="md:hidden flex flex-col justify-center items-center w-10 h-10 text-white"
                     aria-label="Toggle menu">
                     <span class="hamburger-line line-1"></span>
                     <span class="hamburger-line line-2 my-1"></span>
@@ -112,7 +115,7 @@
             </div>
             <!-- Menu Mobile -->
             <nav id="mobile-menu"
-                class="hidden md:hidden bg-white w-full overflow-hidden transition-all duration-300 ease-in-out max-h-0">
+                class="hidden md:hidden w-full overflow-hidden transition-all duration-300 ease-in-out max-h-0">
                 <div class="p-4 space-y-4">
                     <a href="#home"
                         class="block py-2 px-4 hover:bg-yellow-100 rounded transition duration-200">Beranda</a>
@@ -124,7 +127,6 @@
                 </div>
             </nav>
         </header>
-
     </section>
     <!-- akhir navbar -->
 
@@ -300,9 +302,10 @@
                     </div>
                     <div class="md:w-1/2" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-offset="0"
                         data-aos-duration="1000">
-                        <form action="https://api.web3forms.com/submit" method="POST" id="contactForm" class="bg-white rounded-lg">
-                            <input type="hidden" name="to_email" value="nanzusato@gmail.com">
+                        <form action="https://api.web3forms.com/submit" method="POST" id="contactForm"
+                            class="bg-white rounded-lg">
                             <input type="hidden" name="access_key" value="96a8c495-7fa5-4b2f-8f1d-106cc9da4526">
+                            <input type="hidden" name="to_email" value="nanzusato@gmail.com">
                             <div class="mb-4">
                                 <label for="name" class="block text-gray-700 font-bold mb-2">Nama</label>
                                 <input type="text" id="name" name="name"
@@ -313,7 +316,10 @@
                                 <label for="email" class="block text-gray-700 font-bold mb-2">Email</label>
                                 <input type="email" id="email" name="email"
                                     class="w-full px-3 py-2 border rounded-lg text-gray-700"
-                                    placeholder="email@example.com" required>
+                                    placeholder="email@example.com" required
+                                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                                <span id="emailError" class="text-red-500 text-sm hidden">Masukkan alamat email yang
+                                    valid</span>
                             </div>
                             <div class="mb-4">
                                 <label for="message" class="block text-gray-700 font-bold mb-2">Pesan</label>
@@ -324,7 +330,6 @@
                             <button type="submit"
                                 class="bg-yellow-500 text-brown-900 py-2 px-6 rounded-full hover:bg-yellow-400 transition duration-300">Kirim
                                 Pesan</button>
-                                
                         </form>
                     </div>
 
@@ -440,71 +445,32 @@
         });
     </script>
 
-    <script>
-        document.getElementById('contactForm').addEventListener('submit', function (event) {
-            event.preventDefault(); // Mencegah form reload halaman
-
-            // Mengambil nilai dari input form
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-
-            // Kirim data ke server menggunakan fetch
-            fetch('http://localhost:5000/submit-form', {
-
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    name: name,
-                    email: email,
-                    message: message,
-                }),
-            })
-                .then(response => response.json())
-                .then(data => {
-                    // Tampilkan respon sukses atau pesan error
-                    alert('Form berhasil dikirim!');
-                })
-                .catch((error) => {
-                    alert('Terjadi kesalahan, coba lagi!');
-                    console.error('Error:', error);
-                });
-        });
-    </script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
-            // Add smooth scrolling to all links
             $("a").on('click', function (event) {
 
-                // Make sure this.hash has a value before overriding default behavior
                 if (this.hash !== "") {
-                    // Prevent default anchor click behavior
                     event.preventDefault();
 
-                    // Store hash
                     var hash = this.hash;
 
-                    // Using jQuery's animate() method to add smooth page scroll
-                    // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
                     $('html, body').animate({
                         scrollTop: $(hash).offset().top
                     }, 800, function () {
 
-                        // Add hash (#) to URL when done scrolling (default click behavior)
                         window.location.hash = hash;
                     });
-                } // End if
+                }
             });
         });
     </script>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="dist/js/script.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="/form-handler.js"></script>
+    <script src="/dist/js/script.js"></script>
 </body>
 
 </html>
