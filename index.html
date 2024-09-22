@@ -91,36 +91,39 @@
 </head>
 
 <body class="min-h-screen">
-    <header id="navbar" class="fixed top-0 left-0 right-0 w-full z-50 bg-white shadow-md navbar px-20">
-        <div class="container mx-auto py-3 flex justify-between items-center transition-all duration-300">
-            <div class="transition-all duration-300">
-                <img src="/img/navbar_kuki_480.png" width="150" alt="kukikafe" class="transition-all duration-300">
+    <section>
+        <header id="navbar" class="fixed top-0 left-0 right-0 w-full z-50 bg-white shadow-md navbar px-20">
+            <div class="container mx-auto py-3 flex justify-between items-center transition-all duration-300">
+                <div class="transition-all duration-300">
+                    <img src="/img/navbar_kuki_480.png" width="150" alt="kukikafe" class="transition-all duration-300">
+                </div>
+                <nav class="hidden md:flex space-x-4">
+                    <a href="#home" class="hover:text-yellow-500 transition duration-200">Beranda</a>
+                    <a href="#about" class="hover:text-yellow-500 transition duration-200">Tentang</a>
+                    <a href="#menu" class="hover:text-yellow-500 transition duration-200">Menu</a>
+                    <a href="#contact" class="hover:text-yellow-500 transition duration-200">Kontak</a>
+                </nav>
+                <button id="hamburger" class="md:hidden flex flex-col justify-center items-center w-10 h-10"
+                    aria-label="Toggle menu">
+                    <span class="hamburger-line line-1"></span>
+                    <span class="hamburger-line line-2 my-1"></span>
+                    <span class="hamburger-line line-3"></span>
+                </button>
             </div>
-            <nav class="hidden md:flex space-x-4">
-                <a href="#home" class="hover:text-yellow-500 transition duration-200">Beranda</a>
-                <a href="#about" class="hover:text-yellow-500 transition duration-200">Tentang</a>
-                <a href="#menu" class="hover:text-yellow-500 transition duration-200">Menu</a>
-                <a href="#contact" class="hover:text-yellow-500 transition duration-200">Kontak</a>
+            <!-- Menu Mobile -->
+            <nav id="mobile-menu"
+                class="hidden md:hidden bg-white w-full overflow-hidden transition-all duration-300 ease-in-out max-h-0">
+                <div class="p-4 space-y-4">
+                    <a href="#home"
+                        class="block py-2 px-4 hover:bg-yellow-100 rounded transition duration-200">Beranda</a>
+                    <a href="#about"
+                        class="block py-2 px-4 hover:bg-yellow-100 rounded transition duration-200">Tentang</a>
+                    <a href="#menu" class="block py-2 px-4 hover:bg-yellow-100 rounded transition duration-200">Menu</a>
+                    <a href="#contact"
+                        class="block py-2 px-4 hover:bg-yellow-100 rounded transition duration-200">Kontak</a>
+                </div>
             </nav>
-            <button id="hamburger" class="md:hidden flex flex-col justify-center items-center w-10 h-10"
-                aria-label="Toggle menu">
-                <span class="hamburger-line line-1"></span>
-                <span class="hamburger-line line-2 my-1"></span>
-                <span class="hamburger-line line-3"></span>
-            </button>
-        </div>
-        <!-- Menu Mobile -->
-        <nav id="mobile-menu"
-            class="hidden md:hidden bg-white w-full overflow-hidden transition-all duration-300 ease-in-out max-h-0">
-            <div class="p-4 space-y-4">
-                <a href="#home" class="block py-2 px-4 hover:bg-yellow-100 rounded transition duration-200">Beranda</a>
-                <a href="#about" class="block py-2 px-4 hover:bg-yellow-100 rounded transition duration-200">Tentang</a>
-                <a href="#menu" class="block py-2 px-4 hover:bg-yellow-100 rounded transition duration-200">Menu</a>
-                <a href="#contact"
-                    class="block py-2 px-4 hover:bg-yellow-100 rounded transition duration-200">Kontak</a>
-            </div>
-        </nav>
-    </header>
+        </header>
 
     </section>
     <!-- akhir navbar -->
@@ -165,7 +168,7 @@
 
         <!-- about -->
         <section id="about" class="py-16 bg-white">
-            <div class="container mx-auto py-14 px-4">
+            <div class="container mx-auto py-14 px-20">
                 <h2 class="text-3xl font-bold text-center mb-8">Tentang Kami</h2>
                 <div class="flex flex-col md:flex-row items-center justify-between">
                     <div class="md:w-1/2 mb-8 md:mb-0">
@@ -185,7 +188,7 @@
 
         <!-- menu -->
         <section id="menu" class="py-16 bg-stone-200">
-            <div class="container mx-auto py-14 px-4">
+            <div class="container mx-auto py-14 px-20">
                 <h2 class="text-3xl font-bold text-center mb-8">Menu Favorit</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     <div class="bg-white rounded-lg shadow-lg overflow-hidden" data-aos="fade-down"
@@ -283,7 +286,7 @@
 
         <!-- contact -->
         <section id="contact" class="py-16 bg-brown-900 text-brown">
-            <div class="container py-14 mx-auto px-4">
+            <div class="container py-14 mx-auto px-20">
                 <h2 class="text-3xl font-bold text-center mb-8">Hubungi Kami</h2>
                 <div class="flex flex-col md:flex-row justify-between items-center">
                     <div class="md:w-1/2 mb-8 md:mb-0" data-aos="fade-right" data-aos-duration="600">
@@ -442,7 +445,7 @@
 
             // Kirim data ke server menggunakan fetch
             fetch('http://localhost:5000/submit-form', {
-                
+
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
