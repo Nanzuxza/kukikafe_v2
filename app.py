@@ -19,13 +19,13 @@ def submit_form():
     message = request.form.get('message')
 
     # Simpan data ke Firestore
-    doc_ref = db.collection('submissions').add({
+    data = db.collection('submissions').add({
         'name': name,
         'email': email,
         'message': message,
     })
 
-    return jsonify({'success': True, 'message': 'Form berhasil dikirim dan data disimpan ke Firestore!'})
+    return jsonify({'success': True, 'message': 'Form berhasil dikirim dan data disimpan ke Firestore!'}, data=data)
 
 
 
