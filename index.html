@@ -300,25 +300,31 @@
                     </div>
                     <div class="md:w-1/2" data-aos="fade-zoom-in" data-aos-easing="ease-in-back" data-aos-offset="0"
                         data-aos-duration="1000">
-                        <form action="/submit-form" method="POST" id="contactForm" class="bg-white rounded-lg">
+                        <form action="https://api.web3forms.com/submit" method="POST" id="contactForm" class="bg-white rounded-lg">
+                            <input type="hidden" name="to_email" value="achmadnabil1411@gmail.com">
+                            <input type="hidden" name="access_key" value="5e22f882-77a7-424c-a804-f5c3acd37973">
                             <div class="mb-4">
                                 <label for="name" class="block text-gray-700 font-bold mb-2">Nama</label>
-                                <input type="text" id="name" class="w-full px-3 py-2 border rounded-lg text-gray-700"
-                                    placeholder="Nama Anda">
+                                <input type="text" id="name" name="name"
+                                    class="w-full px-3 py-2 border rounded-lg text-gray-700" placeholder="Nama Anda"
+                                    required>
                             </div>
                             <div class="mb-4">
                                 <label for="email" class="block text-gray-700 font-bold mb-2">Email</label>
-                                <input type="email" id="email" class="w-full px-3 py-2 border rounded-lg text-gray-700"
-                                    placeholder="email@example.com">
+                                <input type="email" id="email" name="email"
+                                    class="w-full px-3 py-2 border rounded-lg text-gray-700"
+                                    placeholder="email@example.com" required>
                             </div>
                             <div class="mb-4">
                                 <label for="message" class="block text-gray-700 font-bold mb-2">Pesan</label>
-                                <textarea id="message" rows="4" class="w-full px-3 py-2 border rounded-lg text-gray-700"
-                                    placeholder="Tulis pesan Anda di sini"></textarea>
+                                <textarea id="message" name="message" rows="4"
+                                    class="w-full px-3 py-2 border rounded-lg text-gray-700"
+                                    placeholder="Tulis pesan Anda di sini" required></textarea>
                             </div>
                             <button type="submit"
                                 class="bg-yellow-500 text-brown-900 py-2 px-6 rounded-full hover:bg-yellow-400 transition duration-300">Kirim
                                 Pesan</button>
+                                
                         </form>
                     </div>
 
@@ -498,6 +504,7 @@
 
     <script src="dist/js/script.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/form-handler.js"></script>
 </body>
 
 </html>
